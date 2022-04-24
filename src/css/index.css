@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 header {
     width: fit-content;
     overflow: hidden;
@@ -34,18 +33,54 @@ picture img {
     font-family: 'Orelega One', 'cursive';
 }
 
-.postercontent  span
-{
-    font-size: 3vw;
+.postercontent span {
+    font-size: 3vmax;
     cursor: pointer;
     background-color: coral;
     border: none;
     padding: 1%;
     border-radius: 25%;
-
 }
-.postercontent  :hover
+.loginsection
 {
-    transform: scale(1.1);
-    transition: transform .35s linear;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
+    animation: gradientBG 1s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.loginform
+{
+    width:max-content;
+    padding: 10%;
+    text-align: center;
+    font-size: 2.5vw;
+    border: solid;
+}
+.loginform input 
+{
+  font-size: 2vw;
+  padding-left: 2%;
+  border: none;
+  border-bottom: groove;
+}
+
+.loginform button
+{
+    font-size: 2vw;
+    padding: 1%;
+    margin-right: 10%;   
+}
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+    }
 }
