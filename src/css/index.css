@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 header {
     width: fit-content;
     overflow: hidden;
@@ -28,8 +29,8 @@ picture img {
 .postercontent h1 {
     margin-top: 10%;
     font-size: 10vw;
-    color: antiquewhite;
-    filter: drop-shadow(2px 2px 1px white);
+    color: #faebd7;
+    filter: drop-shadow(2px 2px 1px #ffffff);
     font-family: 'Orelega One', 'cursive';
 }
 
@@ -41,46 +42,73 @@ picture img {
     padding: 1%;
     border-radius: 25%;
 }
-.loginsection
-{
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
-    animation: gradientBG 1s ease infinite;
+
+.loginsection {
+    background-image: linear-gradient(112.7deg, rgba(253, 185, 83, 1) 11.4%, rgba(255, 138, 0, 1) 70.2%);
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
     height: 100vh;
 }
-.loginform
-{
-    width:max-content;
+
+.authforms {
     padding: 10%;
     text-align: center;
+    width: max-content;
     font-size: 2.5vw;
-    border: solid;
-}
-.loginform input 
-{
-  font-size: 2vw;
-  padding-left: 2%;
-  border: none;
-  border-bottom: groove;
+    box-shadow: 0px 2px 0px 7px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 2px 0px 7px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 0px 7px rgba(0, 0, 0, 0.75);
 }
 
-.loginform button
-{
-    font-size: 2vw;
-    padding: 1%;
-    margin-right: 10%;   
+.authforms input {
+    text-align: center;
+    font-size: .5em;
+    border: none;
+    border-bottom: solid white;
+    background-color: transparent;
 }
 
-@keyframes gradientBG {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-    }
+.authforms ::placeholder {
+    color: #000000;
+}
+
+.authforms button {
+    font-size: .5em;
+    width: 50%;
+    padding: 2%;
+    border: none;
+    margin-right: 2%;
+    cursor: pointer;
+    background: transparent;
+}
+
+.authforms button[type=submit] {
+    background-color: green;
+    color: #ffffff;
+}
+
+.links {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0000ff;
+    font-size: 1.2em;
+}
+
+.authoptions {
+    line-height: 1.5;
+    font-size: 3em;
+    text-shadow: 2px 2px 20px #FFFFFF;
+}
+
+.authoptions ul li {
+    list-style-type: square;
+    cursor: pointer;
+}
+
+.authoptions ul :hover {
+    border-bottom: groove #dc143c;
+    width: fit-content;
+    transition: width 1s ease-in;
 }
