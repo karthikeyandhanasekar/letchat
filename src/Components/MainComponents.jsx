@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import ChatPage from "./ChatPage"
 import Home from "./Home"
 import Login from "./login"
 
@@ -11,6 +12,8 @@ const MainComponents = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/chatpage" element={<ChatPage />} />
+
 
     </Routes>
   )

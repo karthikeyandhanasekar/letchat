@@ -1,12 +1,14 @@
 
-import { useState } from "react";
+import React from "react";
 import { Flip } from "react-awesome-reveal";
 import { Controller, useForm } from "react-hook-form";
 import { userlogin, userregister } from "../utils/apiCalls";
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const { handleSubmit, control, reset } = useForm();
-    const [tologin, setloginauth] = useState(false)
+    const [tologin, setloginauth] = React.useState(false)
+    const navigate = useNavigate()
 
     console.log(tologin);
 
@@ -28,6 +30,12 @@ const Login = () => {
             username: data.email,
             password: data.password
         })
+        if (!result.status) {
+            alert(result.message)
+            return
+        }
+        formreset()
+        navigate("/chatpage")
 
         console.log(result);
 
@@ -35,19 +43,19 @@ const Login = () => {
 
     //signup process
     const onsingin = async (data) => {
-        console.log(data);
         const result = await userregister({
             username: data.username,
             email: data.email,
             password: data.password
         })
-
-        console.log(result);
+        if (result.status) {
+            setloginauth(true)
+            formreset()
+        }
     }
 
     return (
         <main className="loginsection">
-
             <div className="authoptions">
                 <h1>Options</h1>
                 <ul >
@@ -62,13 +70,12 @@ const Login = () => {
                     <form onSubmit={handleSubmit(onlogin)} className="authforms">
                         <h1>Login</h1>
                         <br />
-
                         <Controller control={control} name="email"
-                            render={({ field }) => <input type={"text"} placeholder="Email" inputMode={"text"} {...field} autoComplete={"true"} autoFocus={"true"} />} />
+                            render={({ field }) => <input required type={"text"} placeholder="Email" inputMode={"text"} {...field} autoComplete={"true"} autoFocus={"true"} />} />
                         <br /><br />
 
                         <Controller control={control} name="password"
-                            render={({ field }) => <input type={"password"} inputMode={"text"} placeholder="Password" {...field} autoComplete={"true"} />} />
+                            render={({ field }) => <input required type={"password"} inputMode={"text"} placeholder="Password" {...field} autoComplete={"true"} />} />
                         <br /><br />
                         <button type="submit">Login</button>
                         <button type="reset" onClick={formreset} >Clear</button>
@@ -84,15 +91,15 @@ const Login = () => {
                         <br />
 
                         <Controller control={control} name="username"
-                            render={({ field }) => <input type={"text"} placeholder="Username" inputMode={"text"} {...field} autoComplete={"true"} autoFocus={"true"} />} />
+                            render={({ field }) => <input required type={"text"} placeholder="Username" inputMode={"text"} {...field} autoComplete={"true"} autoFocus={"true"} />} />
                         <br /><br />
 
                         <Controller control={control} name="email"
-                            render={({ field }) => <input type={"email"} placeholder="Email" inputMode={"text"} {...field} />} />
+                            render={({ field }) => <input required type={"email"} placeholder="Email" inputMode={"text"} {...field} />} />
                         <br /><br />
 
                         <Controller control={control} name="password"
-                            render={({ field }) => <input type={"password"} inputMode={"text"} placeholder="Password" {...field} autoComplete={"true"} />} />
+                            render={({ field }) => <input required type={"password"} inputMode={"text"} placeholder="Password" {...field} autoComplete={"true"} />} />
                         <br /><br />
                         <button type="submit">SignUp</button>
                         <button type="reset" onClick={formreset} >Clear</button>
@@ -101,6 +108,7 @@ const Login = () => {
 
             </div>
         </main>
+
     )
 }
 
